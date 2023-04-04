@@ -1,5 +1,6 @@
 #ifndef PERSONA_H
 #define PERSONA_H
+
 #include <QObject>
 //QObject, clase especial de QT, que se utiliza para ser heredada por otras clases que nosotros
 //tenemos que escribir. Que nos ayudará a poner otras propiedades a la clase
@@ -18,17 +19,19 @@ public:
     void setNombre(const QString &nombre); //metodo setNombre que recibe el nombre en un String
     void setEdad(const int edad);
     void setSalario(const double salario);
-    QString getNombre()const;
-    int getEdad()const;
-    double getSalario()const;
+
+    QString nombre()const;
+    int edad()const;
+    double salario()const;
 private:
     QString m_nombre;
     int m_edad;
     double m_salario;
 signals:
-    void nombreChanged(const QString &nombre); //señales que se emitirán cuando el nombre, edad o salario
-    void edadChanged(const int edad); //sean modificados
-    void salarioChanged(const double salario);
+    void nombreChanged(QString &nombre); //señales que se emitirán cuando el nombre, edad o salario
+    void edadChanged(int edad); //sean modificados
+    void salarioChanged(double salario); //esta señal, en su interior tiene un emit
+    //aca declaro la señal
 };
 
 #endif // PERSONA_H
